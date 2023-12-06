@@ -26,7 +26,7 @@ export default function Login() {
     <form action="form" onSubmit={ handleNewUser }>
 
       <div>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Nome</label>
         <input
           type="text"
           name="login"
