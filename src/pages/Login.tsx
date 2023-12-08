@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 
 export default function Login() {
   const [login, setLogin] = useState('');
@@ -23,13 +23,13 @@ export default function Login() {
 
   if (loading) return <Loading />;
   return (
-    <form action="form" onSubmit={ handleNewUser }>
+    <form onSubmit={ handleNewUser }>
 
       <div>
         <label htmlFor="name">Nome</label>
         <input
           type="text"
-          name="login"
+          id="name"
           data-testid="login-name-input"
           value={ login }
           onChange={ handleInputChange }

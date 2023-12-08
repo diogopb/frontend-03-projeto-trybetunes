@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import { AlbumType } from '../types';
 
