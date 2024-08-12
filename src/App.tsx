@@ -6,16 +6,13 @@ import Layout from './components/Layout';
 
 function App() {
   return (
-    <>
-      <p>Trybetunes</p>
-      <Routes>
-        <Route path="/" element={ <Login /> } />
-        <Route element={ <Layout /> }>
-          <Route path="/search" element={ <Search /> } />
-          <Route path="/album/:id" element={ <Album /> } />
-        </Route>
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={ <Login /> } />
+      <Route element={ <Layout /> }>
+        <Route path="/search" element={ <Search /> } />
+        <Route path="/album/:id" element={ <Album /> } />
+      </Route>
+    </Routes>
   );
 }
 

@@ -43,50 +43,62 @@ export default function Search() {
   if (loading) return <Loading />;
   return (
     <div>
-      <form onSubmit={ handleFetch }>
+      <div
+        className="bg-black text-white"
+      >
+        <form
+          onSubmit={ handleFetch }
+          className="bg-indigo-950 px-10 py-10 rounded-xl
+        gap-4 w-96 text-center justify-center align-center"
+        >
 
-        <div>
-          <label htmlFor="artist">
-            Nome do artista ou banda
+          <div>
+            <label htmlFor="artist">
+              Artist or band name:
+            </label>
             <input
               type="text"
               value={ artist }
               data-testid="search-artist-input"
               onChange={ handleInputChange }
               required
+              className="text-black rounded-2xl w-80 h-6 text-center bg-slate-300"
             />
-          </label>
-        </div>
 
-        <div>
-          <button
-            data-testid="search-artist-button"
-            disabled={ (handleLengthArtist()) }
-          >
-            Pesquisar
-          </button>
-        </div>
+          </div>
 
-      </form>
-      {(artistResult.length > 0)
-        ? (
           <div>
-            <h3>{`Resultado de álbuns de: ${artistFound}`}</h3>
-            {artistResult.map((album) => (
-              <div key={ album.collectionId }>
-                <p>{`Artista: ${album.artistName}`}</p>
-                <p>Nome do álbum:</p>
-                <Link
-                  to={ `/album/${album.collectionId}` }
-                  data-testid={ `link-to-album-${album.collectionId}` }
-                >
-                  { album.collectionName }
-                </Link>
-                <img src={ album.artworkUrl100 } alt="Capa do album" />
-              </div>
-            ))}
-          </div>)
-        : <p>Nenhum álbum foi encontrado</p>}
+            <button
+              data-testid="search-artist-button"
+              disabled={ (handleLengthArtist()) }
+              className="bg-pink text-white flex items-center justify-center"
+            >
+              Search
+            </button>
+          </div>
+
+        </form>
+        {(artistResult.length > 0)
+          ? (
+            <div className="grid grid-cols-5 relative top-20 items-center">
+              {artistResult.map((album) => (
+                <div key={ album.collectionId }>
+                  <img src={ album.artworkUrl100 } alt="Capa do album" />
+                  {/* <p className="m-1">{`${album.artistName}`}</p> */}
+                  <div className="grid-cols-2 flex gap-2 m-1">
+                    <p>Album:</p>
+                    <Link
+                      to={ `/album/${album.collectionId}` }
+                      data-testid={ `link-to-album-${album.collectionId}` }
+                    >
+                      { album.collectionName }
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>)
+          : <p className="display-block">No albums were found</p>}
+      </div>
     </div>
   );
 }
